@@ -1,5 +1,5 @@
 #%RAML 1.0
-title: Account Salesforce System API
+title: Account System API
 version: v2.0
 baseUri: http://localhost:8081/api
   
@@ -66,19 +66,20 @@ traits:
       201:
         body:
           application/json:
+            type: account
             example: |
               {
                 "id": "0012000001BaRgPAAV",
                 "name": "Example Company"
               }
       400:
-          body:
-            application/json:
-              type: errorResponse
-              example: |
-                {
-                  "message": "Failed to create new Account"
-                }
+        body:
+          application/json:
+            type: errorResponse
+            example: |
+              {
+                "message": "Failed to create new Account"
+              }
   /{id}:
     description: |
       Working with accounts:
@@ -89,7 +90,7 @@ traits:
       id:
         type: string
         example: 0012000001BaRgPAAV
-        description: Represents the account unique id in form of UUID
+        description: Represents the account unique id
     get:
       displayName: Get account by id
       description: Get Account by ID
